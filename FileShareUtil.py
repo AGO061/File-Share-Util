@@ -12,6 +12,18 @@ if sys.platform.startswith('win'):
 FILENAME="FileShareUtil.exe"
 REGISTRY="*\\shell\\FSU"
 
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
 def exit(x):
     sys.exit(x)
 
@@ -90,7 +102,7 @@ img = qr.make_image(fill='black', back_color='white')
 # Main window
 root=Tk()
 root.title("FSU: "+upfile.split("/")[-1:][0])
-root.iconbitmap("icon.ico")
+root.iconbitmap(resource_path("icon.ico"))
 QrImage=ImageTk.PhotoImage(img)
 label_image = Label(image=QrImage)
 entry_text = StringVar()
