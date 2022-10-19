@@ -1,4 +1,3 @@
-from winreg import KEY_ALL_ACCESS
 import requests
 import json
 import os
@@ -33,7 +32,7 @@ if len(sys.argv)==1:
                 winreg.CreateKey(root,REGISTRY+"\\command")
                 winreg.SetValue(root,REGISTRY,winreg.REG_SZ,"Upload with FSU")
                 winreg.SetValue(root,REGISTRY+"\\command",winreg.REG_SZ,"\""+os.path.abspath(os.getcwd()+"/"+FILENAME).replace("/","\\")+"\" \"%V\"")
-                fsu=winreg.OpenKeyEx(root, REGISTRY, reserved=0, access=KEY_ALL_ACCESS)
+                fsu=winreg.OpenKeyEx(root, REGISTRY, reserved=0, access=winreg.KEY_ALL_ACCESS)
                 winreg.SetValueEx(fsu,"Icon",0,winreg.REG_SZ,os.path.abspath(os.getcwd()+"/"+FILENAME).replace("/","\\"))
                 winreg.CloseKey(fsu)
                 winreg.CloseKey(root)
@@ -91,6 +90,7 @@ img = qr.make_image(fill='black', back_color='white')
 # Main window
 root=Tk()
 root.title("FSU: "+upfile.split("/")[-1:][0])
+root.iconbitmap("icon.ico")
 QrImage=ImageTk.PhotoImage(img)
 label_image = Label(image=QrImage)
 entry_text = StringVar()
