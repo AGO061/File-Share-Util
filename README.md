@@ -4,4 +4,7 @@ Add the caja script to your MATE environment to make the process even faster, al
 The code is messy and i have not made a requirements file, check yourself the imports, this repo was really just to save the file.
 
 ## ADDING WINDOWS MENU OPTION
-Run the EXE in the Releases as administrator, press yes and right click on an element to upload it.
+Run the EXE in the Releases as administrator, press yes and right click on an element to upload it.\
+\
+\
+Icon by: Royyan Wijaya
