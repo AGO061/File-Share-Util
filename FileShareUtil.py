@@ -102,7 +102,8 @@ img = qr.make_image(fill='black', back_color='white')
 # Main window
 root=Tk()
 root.title("FSU: "+upfile.split("/")[-1:][0])
-root.iconbitmap(resource_path("icon.ico"))
+if sys.platform.startswith('win'):
+    root.iconbitmap(resource_path("icon.ico"))
 QrImage=ImageTk.PhotoImage(img)
 label_image = Label(image=QrImage)
 entry_text = StringVar()
